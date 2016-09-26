@@ -41,7 +41,7 @@ function listWeapons(character) {
     console.log("Listing weapons for " + character.name + ":");
     for(i in character.weapons) {
         var weapon = character.weapons[i];
-        console.log(" * " . weapon);
+        console.log(" * " + weapon.name);
     }
 }
 
@@ -52,8 +52,8 @@ function weaponAttack(character, weaponName) {
     var maxDamage;
     for(i in character.weapons) {
         var weapon = character.weapons[i];
-        if(weapon.name == weaponName.toUpperCase()) {
-            maxDamage = weapon.damage;
+        if(weapon.name.toUpperCase() == weaponName.toUpperCase()) {
+           maxDamage = weapon.damage;
         }
     }
     console.log("He hits for " + Math.round( Math.random() * maxDamage ) + " damage");
@@ -61,10 +61,12 @@ function weaponAttack(character, weaponName) {
 
 // Run the functions
 listCharacters(adventuringParty);
-listWeapons(adventuringParty.wizard);
-listWeapons(adventuringParty.warrior);
-weaponAttack("Warrior", "axe");
-weaponAttack("Wizard", "STAFF");
+var warrior = adventuringParty.warrior;
+var wizard = adventuringParty.wizard;
+listWeapons(wizard);
+listWeapons(warrior);
+weaponAttack(warrior, "Axe");
+weaponAttack(wizard, "Staff");
 
 
 /*
